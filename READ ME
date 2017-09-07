@@ -1,0 +1,9 @@
+READ ME...
+
+1 - Make sure you add the twitter opening stream code on Server since sending a openSteam request might get blocked if sent from a device due to security reasons.
+
+2 - The free API call has a limit on the throughput. Make sure you check that before u use it in your production code.
+
+3 - this is just a code snippet and not the full functioning code. So make sure you add it in the right place..
+
+4 - This is Node JS code on the server and a JavaScript code on the Client. If you are using some other language you can make the relevant changes.
