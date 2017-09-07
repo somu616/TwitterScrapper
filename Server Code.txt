@@ -1,0 +1,31 @@
+// Server Code
+
+// Create an app on twitter dev and mention the 4 fields below based on your App.
+twitter = new twit( {
+          consumer_key:'AAAAA',
+          consumer_secret:'AAAAA',
+          access_token_key:'AAAAAA',
+          access_token_secret:'AAAAAA'
+        });
+    var count=0;
+    var util=require('util');
+    var tweets=[];
+
+    io.on('connection', function(socket){
+
+      console.log("Socket Connected");
+    
+      twitter.stream('/statuses/filter',{track:'#love'}, function (stream) {
+      stream.on('data', function (data) {
+          tweets.push(data);
+          socket.emit('connection',JSON.stringify(data));
+          console.log('collected ' + tweets.length + ' tweets');
+      })
+
+      for(var x=0;x<tweets.length;x++) {
+        console.log('tweet text-' + tweets[x].text);
+        console.log('user - '+tweets[x].user.name);
+        console.log('user profile image - '+tweets[x].user.profile_image_url);
+    }})
+})
+};

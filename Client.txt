@@ -1,0 +1,17 @@
+.
+.
+.
+
+// change the ip and port to you server address and port.
+
+document.addEventListener('deviceready', function() {
+    var socket = plugin.socket.io.connect("http://128.0.0.1:8080");
+    socket.on('connection', function(text) {
+        socket.on('text', function(text) {
+            console.log("inside"+text);
+        });
+        console.log("outside"+text);
+    });
+});
+
+module.exports.twitterDetails = function(req,res){
